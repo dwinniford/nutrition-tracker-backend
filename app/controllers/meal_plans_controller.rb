@@ -8,14 +8,14 @@ class MealPlansController < ApplicationController
         
         @user = User.find_by(username: "dave")
         @meal_plan = @user.meal_plans.create(title: params[:title])
-        @meal_plan.create_days(params[:days])
+        @meal_plan.create_days(params[:days], params[:recipes])
 
         redirect_to meal_plan_path(@meal_plan)
     end
 
     def show 
         @meal_plan = MealPlan.find(params[:id])
-        render json: @meal_plan, include: [:days]
+        render json: @meal_plan, include: [:days, :recipes]
     end
 
     private 
