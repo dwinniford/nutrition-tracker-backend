@@ -1,7 +1,7 @@
 class MealPlansController < ApplicationController
     def index 
         @meal_plans = MealPlan.all 
-        render json: @meal_plans, only: [:id, :title, :user_id], include: [:days, :recipes, :day_recipes] 
+        render json: MealPlanSerializer.new(@meal_plans).to_serialized_json
     end
 
     def create 
@@ -14,26 +14,11 @@ class MealPlansController < ApplicationController
     end
 
     def show 
-        @meal_plan = MealPlan.find(params[:id])
-        # render json: @meal_plan, only: [:id, :title, :user_id], include: [:days, :day_recipes, :recipes, :nutrients]
-        # render json: @meal_plan.to_json(
-        #     only: [:id, :title, :user_id],
-        #     include: [
-        #         days: {
-        #             except: [:created_at, :updated_at],
-        #             include: [
-        #                 recipes: {include: 
-        #                     [nutrients: {except: [:created_at, :updated_at]}], 
-        #                     except: [:created_at, :updated_at]
-        #                 }
-        #             ]
-        #         } 
-        #     ]
-        # )  
+        @meal_plan = MealPlan.find(params[:id]) 
         render json: MealPlanSerializer.new(@meal_plan).to_serialized_json
     
     end
 
-    private 
+    
     
 end
