@@ -1,7 +1,7 @@
 class MealPlansController < ApplicationController
     def index 
         @meal_plans = MealPlan.all 
-        render json: @meal_plans, include: [:days, :recipes, :day_recipes] 
+        render json: @meal_plans, only: [:id, :title, :user_id], include: [:days, :recipes, :day_recipes] 
     end
 
     def create 
@@ -15,7 +15,22 @@ class MealPlansController < ApplicationController
 
     def show 
         @meal_plan = MealPlan.find(params[:id])
-        render json: @meal_plan, include: [:days, :day_recipes, :recipes, :nutrients]
+        # render json: @meal_plan, only: [:id, :title, :user_id], include: [:days, :day_recipes, :recipes, :nutrients]
+        render json: @meal_plan.to_json(
+            only: [:id, :title, :user_id],
+            include: [
+                days: {
+                    except: [:created_at, :updated_at],
+                    include: [
+                        recipes: {include: 
+                            [nutrients: {except: [:created_at, :updated_at]}], 
+                            except: [:created_at, :updated_at]
+                        }
+                    ]
+                } 
+            ]
+        )  
+    
     end
 
     private 
