@@ -15,7 +15,7 @@ class MealPlansController < ApplicationController
 
     def show 
         @meal_plan = MealPlan.find(params[:id])
-        render json: @meal_plan, include: [:days, :recipes]
+        render json: @meal_plan, include: [:days, :day_recipes, :recipes, :nutrients]
     end
 
     private 
