@@ -12,10 +12,10 @@
 # chicken_recipe = day_1.recipes.create(label: "yummy chicken")
 # chicken_recipe.nutrients.create(name: "Calcium")
 
-jess = User.create(username: "jessie")
-meal_plan = jess.meal_plans.create(title: "Israeli Week")
-day_1 = meal_plan.days.create(number: 1)
-day_2 = meal_plan.days.create(number: 2)
-fish_recipe = day_1.recipes.create(label: "yummy fish")
-fish_recipe.nutrients.create(name: "Iron")
+# jess = User.create(username: "jessie")
+# meal_plan = jess.meal_plans.create(title: "Israeli Week")
+# day_1 = meal_plan.days.create(number: 1)
+# day_2 = meal_plan.days.create(number: 2)
+# fish_recipe = day_1.recipes.create(label: "yummy fish")
+# fish_recipe.nutrients.create(name: "Iron")
 
