@@ -6,7 +6,7 @@ class MealPlansController < ApplicationController
 
     def create 
         
-        @user = User.find_by(username: "dave")
+        @user = User.find_or_create_by(username: "dave")
         @meal_plan = @user.meal_plans.create(title: params[:title])
         @meal_plan.create_days(params[:days], params[:recipes])
 
