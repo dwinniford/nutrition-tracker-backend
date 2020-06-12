@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'search/recipe'
   root to: "application#cookie"
   resources :meal_plans
   resources :users
