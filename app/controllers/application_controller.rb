@@ -14,7 +14,8 @@ class ApplicationController < ActionController::API
         cookies["CSRF-TOKEN"] = {
             value: form_authenticity_token,
             same_site: :none,
-            secure: true
+            secure: true,
+            domain: :all
         }
     end
 end
