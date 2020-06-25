@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
             value: form_authenticity_token,
             same_site: :none,
             secure: true,
-            domain: 'nutrient-rich-recipes.netlify.app'
+            domain: 'https://nutrient-rich-recipes.netlify.app'
         }
     end
 end
