@@ -14,8 +14,7 @@ class ApplicationController < ActionController::API
         cookies["CSRF-TOKEN"] = {
             value: form_authenticity_token,
             same_site: :none,
-            secure: true,
-            domain: 'https://nutrient-rich-recipes.netlify.app'
+            secure: true
         }
     end
 end
